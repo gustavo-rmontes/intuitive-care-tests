@@ -34,4 +34,4 @@ final_df["AMB"] = final_df["AMB"].map(lambda x: mapping.get(x, x))
 final_df.to_csv('tabela.csv', index=False)
 
 # Compactar tabela.csv para tabela.zip
-shutil.make_archive("tabela", "zip", ".", "tabela.csv")
+shutil.make_archive("Teste_Gustavo", "zip", ".", "tabela.csv")
