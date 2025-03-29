@@ -20,3 +20,11 @@ with pdfplumber.open(dataset_path) as pdf:
 final_df = pd.concat(tables, ignore_index=True)
 
 # print(final_df.head())
+
+print(final_df.columns)
+final_df.columns = final_df.columns.str.strip()
+
+mapping = {"OD": "Seg. Odontológica", "AMB": "Seg. Ambulatorial"}
+
+final_df["OD"] = final_df["OD"].map(lambda x: mapping.get(x, x))
+final_df["AMB"] = final_df["AMB"].map(lambda x: mapping.get(x, x))
