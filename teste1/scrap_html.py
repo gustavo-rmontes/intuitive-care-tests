@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-import os
+import os, shutil
 
 gov_url = 'https://www.gov.br/ans/pt-br/acesso-a-informacao/participacao-da-sociedade/atualizacao-do-rol-de-procedimentos'
 
@@ -38,3 +38,5 @@ for link in links_anexos:
     
     except Exception as e:
         print(f"Erro ao baixar {file_name}: {e}\n")
+
+shutil.make_archive('anexos-compact', 'zip', 'anexos')
