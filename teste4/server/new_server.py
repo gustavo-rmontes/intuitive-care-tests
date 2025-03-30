@@ -3,7 +3,13 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app) 
+CORS(app, resources={
+    r"/search": {
+        "origins": ["http://localhost:5173", "http://127.0.0.1:5173", "http://localhost:8080"],
+        "methods": ["GET", "OPTIONS"],
+        "allow_headers": ["Content-Type"]
+    }
+})
 
 data_path = "Relatorio_cadop.csv"
 df = pd.read_csv(data_path, sep=";", encoding="utf-8")
